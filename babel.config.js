@@ -10,7 +10,7 @@ module.exports = {
         alias: {
           '@assets': './src/assets',
           '@features': './src/features',
-          '@service': './src/service',
+          '@services': './src/services',
           '@navigation': './src/navigation',
           '@screens': './src/screens',
           '@components': './src/components',
@@ -18,6 +18,7 @@ module.exports = {
           '@utils': './src/utils',
           '@constants': './src/constants',
           '@themes': './src/themes',
+          '@config' : './src/config'
         },
       },
     ],

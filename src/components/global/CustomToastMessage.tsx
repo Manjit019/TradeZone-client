@@ -7,7 +7,7 @@ import CustomText from './CustomText';
 import { FONTS } from '../../constants/Fonts';
 
 interface Props {
-  type: string;
+  type: 'warningToast'|'successToast'|'normalToast';
   msg: string;
 }
 
@@ -17,7 +17,15 @@ const CustomToastMessage: FC<Props> = ({ type, msg }) => {
 
   switch (type) {
     case 'warningToast':
-      bgColor = '#fcba03';
+      bgColor = '#b88804ff';
+      textColor = Colors.light_text;
+      break;
+    case 'successToast':
+      bgColor = '#06b644ff';
+      textColor = Colors.light_text;
+      break;
+    case 'normalToast':
+      bgColor = '#27293fff';
       textColor = Colors.light_text;
       break;
     default:
@@ -31,7 +39,14 @@ const CustomToastMessage: FC<Props> = ({ type, msg }) => {
           <Icon
             name="checkmark-circle-sharp"
             size={RFValue(16)}
-            color={Colors.themeColor}
+            color={'#8effb6ff'}
+          />
+        )}
+        {type == 'warningToast' && (
+          <Icon
+            name="warning-outline"
+            size={RFValue(16)}
+            color={'#fff4b6ff'}
           />
         )}
 
@@ -39,6 +54,7 @@ const CustomToastMessage: FC<Props> = ({ type, msg }) => {
           style={{ color: textColor }}
           variant="h7"
           fontFamily={FONTS.Medium}
+          numberOfLines={3}
         >
           {msg}
         </CustomText>
@@ -49,6 +65,7 @@ const CustomToastMessage: FC<Props> = ({ type, msg }) => {
 
 const styles = StyleSheet.create({
   subContainer: {
+    width : '98%',
     flexDirection: 'row',
     alignItems: 'center',
     gap: 12,

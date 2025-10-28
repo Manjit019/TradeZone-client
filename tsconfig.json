@@ -7,14 +7,15 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@features/*": ["features/*"],
-      "@service/*": ["service/*"],
+      "@services/*": ["services/*"],
       "@navigation/*": ["navigation/*"],
       "@screens/*": ["screens/*"],
       "@components/*": ["components/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
-      "@themes/*" : ["themes/*"]
+      "@themes/*" : ["themes/*"],
+      "@config/*" : ["config/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

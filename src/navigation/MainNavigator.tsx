@@ -11,8 +11,9 @@ const MainNavigator = () => {
         <Stack.Navigator 
             screenOptions={{
                 headerShown : false,
-                animation : 'fade_from_bottom'
+                animation : 'default'
             }}
+            initialRouteName='SplashScreen'
         >
             {mergedStacks.map((screen, index)=>{
                 return (
