@@ -11,7 +11,7 @@
       "@navigation/*": ["navigation/*"],
       "@screens/*": ["screens/*"],
       "@components/*": ["components/*"],
-      "@storage/*": ["storage/*"],
+      "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
       "@themes/*" : ["themes/*"]

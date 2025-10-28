@@ -14,7 +14,7 @@ module.exports = {
           '@navigation': './src/navigation',
           '@screens': './src/screens',
           '@components': './src/components',
-          '@storage': './src/storage',
+          '@store': './src/store',
           '@utils': './src/utils',
           '@constants': './src/constants',
           '@themes': './src/themes',
