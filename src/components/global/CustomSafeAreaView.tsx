@@ -17,6 +17,7 @@ const CustomSafeAreaView: FC<CustomSafeAreaViewProps> = ({
       <SafeAreaView
         style={[styles.container, style]}
         edges={['top', 'left', 'right']}
+        
       >
         <View style={[styles.container, style]}>{children}</View>
       </SafeAreaView>

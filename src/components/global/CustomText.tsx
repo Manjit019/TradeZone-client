@@ -69,13 +69,13 @@ const CustomText: React.FC<Props> = ({
   const fontFamilyStyle = {
     fontFamily:
       fontFamily === FONTS.Black
-        ? 'Roboto-Black'
+        ? 'Outfit-Black'
         : fontFamily === FONTS.Bold
-        ? 'Roboto-Bold'
+        ? 'Outfit-Bold'
         : fontFamily === FONTS.Light
-        ? 'Roboto-Light'
+        ? 'Outfit-Light'
         : fontFamily === FONTS.Medium
-        ? 'Roboto-Medium'
+        ? 'Outfit-Medium'
         : fontFamily === FONTS.Number
         ? 'Manrope-Regular'
         : fontFamily === FONTS.NumberSemiBold
@@ -83,8 +83,8 @@ const CustomText: React.FC<Props> = ({
         : fontFamily === FONTS.Lato
         ? 'Lato-Regular'
         : fontFamily === FONTS.Thin
-        ? 'Roboto-Thin'
-        : 'Roboto-Regular',
+        ? 'Outfit-Thin'
+        : 'Outfit-Regular',
   };
 
   return (
