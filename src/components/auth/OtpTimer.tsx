@@ -13,7 +13,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { Colors } from '../../constants/Colors';
 
 interface OtpTimerProps {
-  type: string;
+  type?: string;
   style?: TextStyle;
   onPress: () => void;
 }

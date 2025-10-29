@@ -15,7 +15,7 @@ import CustomButton from '@components/global/CustomButton';
 import { Colors } from '@constants/Colors';
 import { validateEmail } from '@utils/ValidationUtil';
 import { CheckEmail } from '@store/actions/userAction';
-import { resetAndNavigate } from '@utils/NavigationUtil';
+import { navigate, resetAndNavigate } from '@utils/NavigationUtil';
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
@@ -38,7 +38,6 @@ const LoginScreen = () => {
     setLoading(true);
     try {
       await dispatch(CheckEmail({ email: email.toLowerCase().trim() }));
-      resetAndNavigate('EmailPasswordScreen',{email})
     } catch (error) {
       console.error('Submission error:', error);
     } finally {

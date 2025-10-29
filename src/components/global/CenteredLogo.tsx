@@ -27,12 +27,15 @@ const styles = StyleSheet.create({
   imgContainer: {
     width: RFValue(100),
     height: RFValue(100),
+    borderWidth: 1,
+    borderColor: '#38556d3d',
+    borderRadius: 40,
   },
   img: {
     height: '100%',
     width: '100%',
     resizeMode: 'contain',
-    borderRadius: 50,
+    borderRadius: 40,
   },
   icon: {
     position: 'absolute',

@@ -6,7 +6,7 @@ import { Colors } from '../../constants/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import TouchableText from '../auth/TouchableText';
-import { checkBiometrics } from '../../utils/BiometricUtils';
+import { checkBiometrics } from '@utils/BiometricUtil';
 
 interface NumberPadProps {
   onPressNumber: (number: number | string) => void;
@@ -35,7 +35,7 @@ const CustomNumberPad: React.FC<NumberPadProps> = ({
   }, []);
 
   const renderButton = (label: string | number, onPress: () => void) => (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={onPress}>
       <CustomText
         variant="h2"
         fontFamily={
@@ -54,7 +54,7 @@ const CustomNumberPad: React.FC<NumberPadProps> = ({
   );
 
   const renderIconButton = (icon: string, onPress: () => void) => (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.button} onPress={onPress}>
       <Icon
         name={icon}
         size={RFValue(22)}
@@ -116,26 +116,30 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 12,
+    justifyContent: 'center',
+    alignItems : 'center',
+    marginTop: 14,
+    gap : 14
   },
   button: {
     borderRadius: 16,
     borderWidth: 1,
-    width: '32%',
-    borderColor: '#333',
+    width: '30%',
+    // aspectRatio : 1,
+    borderColor: '#4a7da04f',
     height: 60,
     padding: 12,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#000000ff',
     shadowOffset: {
       width: 0,
       height: 1,
     },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 3,
+    // elevation: 0.15,
+    backgroundColor : '#4baaca25'
   },
   buttonText: {
     fontSize: 22,

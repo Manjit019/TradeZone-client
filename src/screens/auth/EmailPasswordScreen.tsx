@@ -7,7 +7,7 @@ import CustomInput from '@components/inputs/CustomInput';
 import { useRoute } from '@react-navigation/native';
 import CustomButton from '@components/global/CustomButton';
 import { useAppDispatch } from '@store/reduxHook';
-import { validatePassword } from '@utils/ValidationUtil';
+import { validatePassword, validatePasswordEntry } from '@utils/ValidationUtil';
 import { LoginWithEmail } from '@store/actions/userAction';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { screenWidth } from '@utils/Scaling';
@@ -26,11 +26,9 @@ const EmailPasswordScreen = () => {
   const [passwordError, setPasswordError] = useState('');
 
   const validate = () => {
-    if (!validatePassword(password)) {
-      setPasswordError('Please enter a valid email address');
-      return false;
-    }
-    return true;
+    const {msg,result} = validatePasswordEntry(password, email, email);
+    setPasswordError(msg);
+    return result;
   };
 
   const handleOnSubmit = async () => {

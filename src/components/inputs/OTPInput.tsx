@@ -117,6 +117,7 @@ const styles = StyleSheet.create({
     color: Colors.errorColor,
     fontSize: Platform.OS === 'ios' ? RFValue(11) : RFValue(11),
     fontFamily: FONTS.Medium,
+    alignSelf : 'flex-end'
   },
   inputBox: {
     borderRadius: 12,
@@ -126,14 +127,14 @@ const styles = StyleSheet.create({
     marginRight: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#000',
+    shadowColor: '#10101479',
     shadowOffset: {
       width: 0,
-      height: 1,
+      height: 2,
     },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 3,
+    elevation: 5
   },
 });
 

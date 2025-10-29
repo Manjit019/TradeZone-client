@@ -37,7 +37,7 @@ export const validatePasswordEntry = (
   }
 
   return {
-    msg: 'Password passed all checks',
+    msg: '',
     result: true,
   };
 };

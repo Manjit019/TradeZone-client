@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 5,
     paddingHorizontal: 10,
-    paddingBottom: Platform.OS === 'ios' ? 25 : 10,
+    paddingBottom: Platform.OS === 'ios' ? 25 : 30,
   },
 });
 

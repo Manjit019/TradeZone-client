@@ -1,4 +1,6 @@
+import AccountProtectedScreen from '@screens/auth/AccountProtectedScreen';
 import AuthVerification from '@screens/auth/AuthVerification';
+import ConfirmPinScreen from '@screens/auth/ConfirmPinScreen';
 import EmailOtpScreen from '@screens/auth/EmailOtpScreen';
 import EmailPasswordScreen from '@screens/auth/EmailPasswordScreen';
 import LoginScreen from '@screens/auth/LoginScreen';
@@ -41,6 +43,14 @@ export const authStacks = [
     name: 'EmailOtpScreen',
     component: EmailOtpScreen,
   },
+  {
+    name : 'ConfirmPinScreen',
+    component : ConfirmPinScreen,
+  },
+  {
+    name : 'AccountProtectedScreen',
+    component : AccountProtectedScreen
+  }
 ];
 
 export const dashboardStacks = [

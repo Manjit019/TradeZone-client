@@ -99,6 +99,7 @@ const DiamondOTPInput: React.FC<DiamondOTPInputProps> = ({
   const half = size / 2;
 
   const diamondPoints = `${half},0 ${size},${half} ${half},${size} 0,${half}`;
+ 
 
   return (
     <>

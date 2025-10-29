@@ -1,4 +1,4 @@
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TextStyle, TouchableOpacity, ViewStyle } from "react-native";
 import React, { FC } from "react";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useTheme } from "@react-navigation/native";
@@ -7,17 +7,18 @@ import { goBack, navigate } from "../../utils/NavigationUtil";
 
 interface BackButtonProps {
   path?: string;
+  customStyle ?: ViewStyle | ViewStyle[] | TextStyle |any;
 }
-const BackButton: FC<BackButtonProps> = ({ path }) => {
+const BackButton: FC<BackButtonProps> = ({ path,customStyle }) => {
   const { colors } = useTheme();
   return (
     <TouchableOpacity
-      style={styles.container}
+        style={[styles.container,customStyle]}
       onPress={() => {
         path ? navigate(path) : goBack();
       }}
     >
-      <Icon name="arrow-back" color={colors.text} size={RFValue(20)} />
+      <Icon name="chevron-back" color={customStyle?.color ||colors.text} size={RFValue(20)} />
     </TouchableOpacity>
   );
 };

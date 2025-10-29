@@ -29,43 +29,43 @@ const SplashScreen = () => {
       'app_refresh_token',
     ) as string;
 
-    // if (app_access_token) {
-    //   const decodedAccessToken = jwtDecode<DecodedToken>(app_access_token);
-    //   const decodedRefreshToken = jwtDecode<DecodedToken>(app_refresh_token);
+    if (app_access_token) {
+      const decodedAccessToken = jwtDecode<DecodedToken>(app_access_token);
+      const decodedRefreshToken = jwtDecode<DecodedToken>(app_refresh_token);
 
-    //   const currentTime = Date.now() / 1000;
+      const currentTime = Date.now() / 1000;
 
-    //   if (decodedRefreshToken?.exp < currentTime) {
-    //     resetAndNavigate('LoginScreen');
-    //     Toast.show({
-    //       type: 'warningToast',
-    //       props: {
-    //         msg: 'Session Expired! Please login again.',
-    //       },
-    //     });
-    //     return;
-    //   }
+      if (decodedRefreshToken?.exp < currentTime) {
+        resetAndNavigate('LoginScreen');
+        Toast.show({
+          type: 'warningToast',
+          props: {
+            msg: 'Session Expired! Please login again.',
+          },
+        });
+        return;
+      }
 
-    //   if (decodedAccessToken?.exp < currentTime) {
-    //     try {
-    //       refresh_token('app', true);
-    //       await dispatch(CheckProfile);
-    //     } catch (error) {
-    //       console.log(error);
-    //       Toast.show({
-    //         type: 'warningToast',
-    //         props: {
-    //           msg: 'Session Expired! Please login again.',
-    //         },
-    //       });
-    //       return;
-    //     }
-    //   } else {
-    //     await dispatch(CheckProfile);
-    //   }
-    //   return;
-    // }
-    resetAndNavigate('PhoneScreen');
+      if (decodedAccessToken?.exp < currentTime) {
+        try {
+          refresh_token('app', true);
+          await dispatch(CheckProfile);
+        } catch (error) {
+          console.log(error);
+          Toast.show({
+            type: 'warningToast',
+            props: {
+              msg: 'Session Expired! Please login again.',
+            },
+          });
+          return;
+        }
+      } else {
+        await dispatch(CheckProfile);
+      }
+      return;
+    }
+    resetAndNavigate('LoginScreen');
   };
 
   useEffect(() => {

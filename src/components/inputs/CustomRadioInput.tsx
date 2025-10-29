@@ -96,8 +96,9 @@ const styles = StyleSheet.create({
   radioContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-between',
     marginVertical: 12,
+    gap : 24
   },
   inputMainContainer: {
     marginVertical: 12,
