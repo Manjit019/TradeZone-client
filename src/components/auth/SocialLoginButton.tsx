@@ -44,9 +44,9 @@ const styles = StyleSheet.create({
     width: '100%',
     marginVertical: 12,
     backgroundColor: Colors.sub_background,
-    borderWidth: 1.5,
+    borderWidth: 0.75,
     borderColor: Colors.border,
-    shadowColor: '#000',
+    shadowColor: '#0b1f37ff',
     shadowOffset: {
       width: 0,
       height: 2,

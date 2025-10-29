@@ -1,6 +1,6 @@
 import { useTheme } from '@react-navigation/native';
 import { FC, useEffect, useState } from 'react';
-import { Animated, StyleSheet, ViewStyle } from 'react-native';
+import { Animated, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import TouchableRipple from 'react-native-material-ripple';
 import { Colors } from '../../constants/Colors';
 import CustomText from './CustomText';
@@ -8,10 +8,13 @@ import { FONTS } from '../../constants/Fonts';
 
 interface CustomButtonProps {
   text: string;
-  loading: boolean;
-  disabled: boolean;
+  loading?: boolean;
+  disabled?: boolean;
   onPress: () => void;
   style?: ViewStyle;
+  textStyle?: TextStyle;
+  icon?: React.ReactNode;
+  iconPosition?: 'left' | 'right';
 }
 
 const CustomButton: FC<CustomButtonProps> = ({
@@ -20,8 +23,11 @@ const CustomButton: FC<CustomButtonProps> = ({
   disabled,
   onPress,
   style,
+  textStyle,
+  icon,
+  iconPosition,
 }) => {
-  const { colors } = useTheme();
+  // const { colors } = useTheme();
   const [animatedValue, setAnimatedValue] = useState(new Animated.Value(0));
 
   useEffect(() => {
@@ -51,18 +57,17 @@ const CustomButton: FC<CustomButtonProps> = ({
       style={[
         styles.btn,
         {
-          backgroundColor: loading || disabled ? colors.card : Colors.profit,
+          backgroundColor:
+            loading || disabled ? Colors.disabled : Colors.themeColor,
         },
         style,
       ]}
     >
-      <CustomText
-        fontFamily={FONTS.Bold}
-        variant="h6"
-        style={{ color: 'white' }}
-      >
+      {iconPosition === 'left' && icon}
+      <CustomText fontFamily={FONTS.Bold} variant="h5" style={textStyle}>
         {text}
       </CustomText>
+      {iconPosition === 'right' && icon}
       {loading && (
         <Animated.View
           style={[
@@ -82,8 +87,10 @@ const styles = StyleSheet.create({
     padding: 16,
     width: '100%',
     borderRadius: 12,
+    flexDirection : 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    gap : 12,
     position: 'relative',
     overflow: 'hidden',
     shadowColor: '#000',

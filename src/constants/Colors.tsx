@@ -1,7 +1,7 @@
 
 
 export enum Colors {
-  themeColor = "#0EA5E9", 
+  themeColor = "#5ae5feff", 
   
  
   background = "#0F172A", 
@@ -14,6 +14,8 @@ export enum Colors {
   
   active_tab = "#06B6D4", 
   unactive_tab = "#64748B",
+
+  disabled = "#646668ff",
   
   notification_card = "#1E293B", 
   

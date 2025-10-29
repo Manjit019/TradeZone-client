@@ -18,7 +18,8 @@ module.exports = {
           '@utils': './src/utils',
           '@constants': './src/constants',
           '@themes': './src/themes',
-          '@config' : './src/config'
+          '@config' : './src/config',
+          '@styles' : './src/styles',
         },
       },
     ],

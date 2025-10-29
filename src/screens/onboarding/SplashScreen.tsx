@@ -11,6 +11,7 @@ import { resetAndNavigate } from '@utils/NavigationUtil';
 import { jwtDecode } from 'jwt-decode';
 import { refresh_token } from 'services/apiConfig';
 import { CheckProfile } from '@store/actions/userAction';
+import AppLogo from '@assets/images/tradezone.jpg'
 
 interface DecodedToken {
   exp: number;
@@ -28,43 +29,43 @@ const SplashScreen = () => {
       'app_refresh_token',
     ) as string;
 
-    if (app_access_token) {
-      const decodedAccessToken = jwtDecode<DecodedToken>(app_access_token);
-      const decodedRefreshToken = jwtDecode<DecodedToken>(app_refresh_token);
+    // if (app_access_token) {
+    //   const decodedAccessToken = jwtDecode<DecodedToken>(app_access_token);
+    //   const decodedRefreshToken = jwtDecode<DecodedToken>(app_refresh_token);
 
-      const currentTime = Date.now() / 1000;
+    //   const currentTime = Date.now() / 1000;
 
-      if (decodedRefreshToken?.exp < currentTime) {
-        resetAndNavigate('LoginScreen');
-        Toast.show({
-          type: 'warningToast',
-          props: {
-            msg: 'Session Expired! Please login again.',
-          },
-        });
-        return;
-      }
+    //   if (decodedRefreshToken?.exp < currentTime) {
+    //     resetAndNavigate('LoginScreen');
+    //     Toast.show({
+    //       type: 'warningToast',
+    //       props: {
+    //         msg: 'Session Expired! Please login again.',
+    //       },
+    //     });
+    //     return;
+    //   }
 
-      if (decodedAccessToken?.exp < currentTime) {
-        try {
-          refresh_token('app', true);
-          await dispatch(CheckProfile);
-        } catch (error) {
-          console.log(error);
-          Toast.show({
-            type: 'warningToast',
-            props: {
-              msg: 'Session Expired! Please login again.',
-            },
-          });
-          return;
-        }
-      } else {
-        await dispatch(CheckProfile);
-      }
-      return;
-    }
-    resetAndNavigate('LoginScreen');
+    //   if (decodedAccessToken?.exp < currentTime) {
+    //     try {
+    //       refresh_token('app', true);
+    //       await dispatch(CheckProfile);
+    //     } catch (error) {
+    //       console.log(error);
+    //       Toast.show({
+    //         type: 'warningToast',
+    //         props: {
+    //           msg: 'Session Expired! Please login again.',
+    //         },
+    //       });
+    //       return;
+    //     }
+    //   } else {
+    //     await dispatch(CheckProfile);
+    //   }
+    //   return;
+    // }
+    resetAndNavigate('PhoneScreen');
   };
 
   useEffect(() => {
@@ -72,7 +73,7 @@ const SplashScreen = () => {
       await tokenCheck();
     }
 
-    const timeoutId = setTimeout(deepLinks, 3000);
+    const timeoutId = setTimeout(deepLinks, 2500);
     return () => clearTimeout(timeoutId);
   }, []);
 
@@ -80,7 +81,7 @@ const SplashScreen = () => {
     <CustomSafeAreaView>
       <View style={styles.container}>
         <Image
-          source={require('@assets/images/tradezone.jpg')}
+          source={AppLogo}
           style={styles.logo}
         />
 

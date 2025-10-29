@@ -15,7 +15,8 @@
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
       "@themes/*" : ["themes/*"],
-      "@config/*" : ["config/*"]
+      "@config/*" : ["config/*"],
+      "@styles/*" : ["styles/*"],
     }
   },
   "include": ["**/*.ts", "**/*.tsx"],

@@ -65,16 +65,16 @@ const CustomInput: React.FC<
               : isFocused
               ? Colors.themeColor
               : Colors.border,
-            borderWidth: isFocused ? 2 : 1,
-            borderRadius: isFocused ? 8 : 6,
-            backgroundColor: isFocused ? '#1E293B' : 'transparent',
+            borderWidth: isFocused ? 2 : 1.5,
+            borderRadius: isFocused ? 14 : 12,
+            backgroundColor: isFocused ? '#1E293B' : disabledBackground ? '#465164d0' : 'transparent',
           },
           containerStyle,
         ]}
       >
         {leftIcon}
         <TextInput
-          placeholderTextColor="#dadbde"
+          placeholderTextColor="#aaadb66f"
           style={[
             styles.textInput,
             {
@@ -145,15 +145,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 6,
     justifyContent: 'space-between',
-    paddingHorizontal: 12,
-    paddingVertical: 8,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
   },
   textInput: {
     fontFamily: FONTS.Regular,
     fontSize: Platform.OS === 'ios' ? RFValue(12) : RFValue(14),
     alignItems: 'flex-start',
     height: 32,
-    width: '80%',
+    width: '92%',
     paddingVertical: 6,
   },
   password: {
