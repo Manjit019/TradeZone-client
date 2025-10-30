@@ -1,8 +1,8 @@
 import { View, StyleSheet } from 'react-native';
 import React, { FC, useState } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
-import { goBack } from '../../utils/NavigationUtil';
+import { goBack } from '@utils/NavigationUtil';
 import { useTheme } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import CustomText from '../global/CustomText';
@@ -15,7 +15,7 @@ const TradingViewHeader = () => {
   return (
     <View style={[styles.flexRow, { borderColor: colors.border }]}>
       <Icon
-        name="arrow-back"
+        name="chevron-back"
         onPress={() => {
           goBack();
           Orientation.unlockAllOrientations();

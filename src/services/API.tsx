@@ -6,7 +6,7 @@ export const BASE_URL = Platform.OS === 'ios' ? `http://localhost:3000` : `http:
 export const SOCKET_URL = Platform.OS === 'ios' ? `http://localhost:4000` : `http://10.0.2.2:4000`
 
 
-export const TRADINGVIEW_WEB_URI = Platform.OS === 'ios' ? `http://localhost:3001` : `http://10.0.2.2:3001`
+export const TRADINGVIEW_WEB_URI = `http://localhost:3001`
 
 
 export const CHECK_EMAIL = `${BASE_URL}/auth/check-email`;

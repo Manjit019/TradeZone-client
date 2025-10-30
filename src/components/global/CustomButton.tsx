@@ -11,7 +11,7 @@ interface CustomButtonProps {
   loading?: boolean;
   disabled?: boolean;
   onPress: () => void;
-  style?: ViewStyle;
+  style?: ViewStyle | ViewStyle[];
   textStyle?: TextStyle;
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
