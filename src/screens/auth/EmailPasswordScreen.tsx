@@ -14,10 +14,12 @@ import { screenWidth } from '@utils/Scaling';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '@constants/Fonts';
 import { globalStyles } from '@styles/globalStyle';
+import TouchableText from '@components/auth/TouchableText';
+import { navigate } from '@utils/NavigationUtil';
 
 const EmailPasswordScreen = () => {
   const route = useRoute();
-  const { email } = route.params as any;
+  const { email } = route.params as any || 'hello@gmail.com';
 
   const dispatch = useAppDispatch();
 
@@ -45,6 +47,10 @@ const EmailPasswordScreen = () => {
       setLoading(false);
     }
   };
+
+  const handleForgotPassword = async () => {
+    navigate("ForgotPasswordScreen",{email : email})
+  }
 
   return (
     <CustomSafeAreaView>
@@ -76,6 +82,8 @@ const EmailPasswordScreen = () => {
             onSubmitEditing={handleOnSubmit}
             password={true}
           />
+
+          <TouchableText firstText='Forgot Password?' onPress={handleForgotPassword}  />
         </View>
       </View>
       <View style={globalStyles.absoluteBottom}>

@@ -8,28 +8,37 @@ import { goBack, navigate } from "../../utils/NavigationUtil";
 interface BackButtonProps {
   path?: string;
   customStyle ?: ViewStyle | ViewStyle[] | TextStyle |any;
+  withBg ?: boolean;
 }
-const BackButton: FC<BackButtonProps> = ({ path,customStyle }) => {
+const BackButton: FC<BackButtonProps> = ({ path,customStyle,withBg }) => {
   const { colors } = useTheme();
   return (
     <TouchableOpacity
-        style={[styles.container,customStyle]}
+        style={[styles.container,customStyle,withBg && styles.backBtn]}
       onPress={() => {
         path ? navigate(path) : goBack();
       }}
     >
-      <Icon name="chevron-back" color={customStyle?.color ||colors.text} size={RFValue(20)} />
+      <Icon name="chevron-back" color={customStyle?.color || withBg ? '#000' : colors.text} size={RFValue(20)} />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: 4,
-    marginBottom: 8,
   },
+   backBtn : {
+    backgroundColor : '#fff',
+    padding : 10,
+    borderRadius : 70,
+    width : 50,
+    height : 50,
+    color : '#0d0c0cff',
+    justifyContent : 'center',
+    alignItems : 'center'
+  }
 });
 export default BackButton;

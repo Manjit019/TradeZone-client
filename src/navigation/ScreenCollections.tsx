@@ -3,10 +3,12 @@ import AuthVerification from '@screens/auth/AuthVerification';
 import ConfirmPinScreen from '@screens/auth/ConfirmPinScreen';
 import EmailOtpScreen from '@screens/auth/EmailOtpScreen';
 import EmailPasswordScreen from '@screens/auth/EmailPasswordScreen';
+import ForgotPasswordScreen from '@screens/auth/ForgotPasswordScreen';
 import LoginScreen from '@screens/auth/LoginScreen';
 import PersonalDetails from '@screens/auth/PersonalDetails';
 import PhoneScreen from '@screens/auth/PhoneScreen';
 import PinScreen from '@screens/auth/PinScreen';
+import RegisterScreen from '@screens/auth/RegisterScreen';
 import SplashScreen from '@screens/onboarding/SplashScreen';
 import Stock from '@screens/stock/Stock';
 
@@ -22,6 +24,10 @@ export const authStacks = [
   {
     name: 'PersonalDetailScreen',
     component: PersonalDetails,
+  },
+  {
+    name : 'RegisterScreen',
+    component : RegisterScreen
   },
   {
     name: 'PhoneScreen',
@@ -50,6 +56,10 @@ export const authStacks = [
   {
     name : 'AccountProtectedScreen',
     component : AccountProtectedScreen
+  },
+  {
+    name : 'ForgotPasswordScreen',
+    component : ForgotPasswordScreen
   }
 ];
 

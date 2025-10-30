@@ -70,10 +70,11 @@ const SplashScreen = () => {
 
   useEffect(() => {
     async function deepLinks() {
-      await tokenCheck();
+      // await tokenCheck();
+      resetAndNavigate('LoginScreen');
     }
 
-    const timeoutId = setTimeout(deepLinks, 2500);
+    const timeoutId = setTimeout(deepLinks, 2000);
     return () => clearTimeout(timeoutId);
   }, []);
 

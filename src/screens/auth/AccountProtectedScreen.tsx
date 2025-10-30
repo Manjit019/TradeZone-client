@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import BiometricVerification from './BiometricVerification';
 import ResetPin from './ResetPin';
+import ResetOtpVerification from './ResetOtpVerification';
 
 const AccountProtectedScreen = () => {
 

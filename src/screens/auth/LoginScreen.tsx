@@ -16,6 +16,7 @@ import { Colors } from '@constants/Colors';
 import { validateEmail } from '@utils/ValidationUtil';
 import { CheckEmail } from '@store/actions/userAction';
 import { navigate, resetAndNavigate } from '@utils/NavigationUtil';
+import TouchableText from '@components/auth/TouchableText';
 
 const LoginScreen = () => {
   const dispatch = useAppDispatch();
@@ -117,6 +118,14 @@ const LoginScreen = () => {
         By continuing, you agree to our Terms of Service and Privacy Policy.
       </CustomText>
 
+      <BreakerText text="Are you a new user?" />
+
+      <TouchableText
+        firstText="+ Register Yourself"
+        style={styles.registerBtn}
+        onPress={()=>navigate('RegisterScreen')}
+      />
+
       <View style={styles.madeWith}>
         <CustomText style={{ textAlign: 'center' }}>
           Made with ‪‪❤︎‬ by 𓆩Manjit𓆪
@@ -160,6 +169,16 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    padding: 20,
   },
+  registerBtn : {
+    backgroundColor : '#cccccc31',
+    borderRadius : 10,
+    padding : 7,
+    textAlign : 'center',
+    justifyContent : 'center',
+    alignItems : 'center',
+    width : '42%',
+    textDecorationLine : 'none',
+    alignSelf : 'center'
+  }
 });

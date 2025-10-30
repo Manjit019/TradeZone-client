@@ -64,7 +64,7 @@ const OTPInputCentered: React.FC<OTPInputCenteredProps> = ({
                 borderColor: error
                   ? Colors.errorColor
                   : otpValues[index] !== ''
-                  ? Colors.profit
+                  ? Colors.themeColor
                   : '#4f4e4a',
                 borderBottomWidth: focusedIndex === index ? 2 : 1,
                 transform: [{ translateX: shakeAnimation }],
@@ -73,7 +73,7 @@ const OTPInputCentered: React.FC<OTPInputCenteredProps> = ({
           >
             <CustomText
               style={{
-                color: otpValues[index] !== '' ? Colors.profit : colors.text,
+                color: otpValues[index] !== '' ? Colors.themeColor : colors.text,
               }}
               fontFamily={FONTS.Number}
               variant="h5"

@@ -1,100 +1,129 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView';
 import CenteredLogo from '@components/global/CenteredLogo';
 import CustomText from '@components/global/CustomText';
 import CustomInput from '@components/inputs/CustomInput';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useTheme } from '@react-navigation/native';
 import CustomButton from '@components/global/CustomButton';
-import { useAppDispatch } from '@store/reduxHook';
+import { useAppDispatch, useAppSelector } from '@store/reduxHook';
 import { validatePassword } from '@utils/ValidationUtil';
-import { LoginWithEmail } from '@store/actions/userAction';
+import { LoginWithEmail, SendOTP, VerifyOTP } from '@store/actions/userAction';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { screenWidth } from '@utils/Scaling';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '@constants/Fonts';
 import { globalStyles } from '@styles/globalStyle';
+import OTPInput from '@components/inputs/OTPInput';
+import CustomNumberPad from '@components/inputs/CustomNumberPad';
+import { Colors } from '@constants/Colors';
+import { navigate } from '@utils/NavigationUtil';
+import { selectUser } from '@store/reducers/userSlice';
 
 const EmailOtpScreen = () => {
   const route = useRoute();
-  const { email } = route.params as any;
-
+  const { email } = (route.params as any) || '';
   const dispatch = useAppDispatch();
 
   const [loading, setLoading] = useState(false);
-  const [password, setPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [otpError, setOtpError] = useState<null | string>('');
+  const [otp, setOtp] = useState('');
 
-  const validate = () => {
-    if (!validatePassword(password)) {
-      setPasswordError('Please enter a valid email address');
-      return false;
+  const handleVerification = async () => {
+    setLoading(true);
+    if (!otp) {
+      setLoading(false);
+      setOtpError('Enter OTP');
+      return;
     }
-    return true;
+
+    await dispatch(
+      VerifyOTP({
+        email: email,
+        otp_type: 'email',
+        otp,
+      }),
+    );
+    setLoading(false);
   };
 
-  const handleOnSubmit = async () => {
-    if (!validate()) return;
+  const handleChange = (text: string) => {
+    setOtp(text);
+    setOtpError(null);
+  };
 
-    setLoading(true);
-    try {
-      await dispatch(
-        LoginWithEmail({ email: email.toLowerCase().trim(), password }),
-      );
-    } catch (error) {
-      console.error('Submission error:', error);
-    } finally {
-      setLoading(false);
+  const handleResendOtp = async () => {
+    await dispatch(SendOTP({ email: email, otp_type: 'email' }));
+  };
+
+  const [otpValues, setOtpValues] = useState(['', '', '', '', '', '']);
+  const [focusedIndex, setFocusedIndex] = useState(0);
+
+  const handlePressNumber = (number: number | string) => {
+    if (focusedIndex < otpValues.length) {
+      setFocusedIndex(focusedIndex + 1);
+      const newOtpValues = [...otpValues];
+      newOtpValues[focusedIndex] = number.toString();
+      setOtpError(null);
+      setOtpValues(newOtpValues);
+    }
+  };
+
+  const handlePressBackspace = () => {
+    if (focusedIndex > 0) {
+      setFocusedIndex(focusedIndex - 1);
+      const newOtpValues = [...otpValues];
+      newOtpValues[focusedIndex - 1] = '';
+      setOtpValues(newOtpValues);
+    }
+  };
+
+  const handlePressCheckmark = () => {
+    let valid = false;
+    const isNotEmpty = otpValues.map(i => {
+      if (i == '') {
+        valid = true;
+        setOtpError('Enter all PIN');
+      }
+    });
+    if (!valid) {
+      handleVerification();
     }
   };
 
   return (
-    <CustomSafeAreaView>
-      <View style={styles.container}>
-        <CenteredLogo icon={<Icon name='lock-closed' size={RFValue(16)} color={'#fff'} />} />
-        <CustomText fontFamily={FONTS.Medium} variant="h4" style={{marginTop : 24}}>
-          Email Verification
-        </CustomText>
-        <CustomText>
-          Enter OTP sent on your email.
-        </CustomText>
-
-        {/* <View style={{ width: '100%' }}>
-          <CustomInput
-            value={email}
-            disabled={true}
-            disabledBackground={true}
-            leftIcon={<Icon name="mail" size={RFValue(14)} color={'#a7a7a7ff'} />}
+    <KeyboardAvoidingView
+      keyboardVerticalOffset={10}
+      behavior="padding"
+      style={styles.keyboardContainer}
+    >
+      <CustomSafeAreaView>
+          <CenteredLogo />
+        <View style={styles.container}>
+          <View style={styles.icon}>
+            <Icon name="lock-closed" size={RFValue(26)} color={'#34c342ff'} />
+          </View>
+          <CustomText fontFamily={FONTS.Bold} variant="h3">
+            Verify Your Email
+          </CustomText>
+          <CustomText
+            style={{ width: '90%', opacity: 0.7, textAlign: 'center' }}
+          >
+            Enter the OTP sent to your registered email.
+          </CustomText>
+          <OTPInput
+            focusedIndex={focusedIndex}
+            otpValues={otpValues}
+            error={otpError}
           />
-
-          <CustomInput
-            placeholder="Enter Your Password"
-            returnKeyType="done"
-            value={password}
-            focusable={true}
-            error={passwordError}
-            onEndEditing={validate}
-            onChangeText={text => {
-              setPassword(text);
-              setPasswordError('');
-            }}
-            onSubmitEditing={handleOnSubmit}
-            password={true}
-          />
-        </View> */}
-      </View>
-      <View style={globalStyles.absoluteBottom}>
-        <CustomButton
-          text="Verify"
-          disabled={loading}
-          loading={loading}
-          onPress={handleOnSubmit}
-          textStyle={{ color: '#10181cff' }}
-          icon={<Icon name="caret-forward" size={16} />}
-          iconPosition="right"
+        </View>
+        <CustomNumberPad
+          onPressBackspace={handlePressBackspace}
+          onPressCheckmark={handlePressCheckmark}
+          onPressNumber={handlePressNumber}
         />
-      </View>
-    </CustomSafeAreaView>
+      </CustomSafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -105,6 +134,16 @@ const styles = StyleSheet.create({
     padding: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    top : -36
   },
-
+  keyboardContainer: {
+    flex: 1,
+  },
+  icon: {
+    borderRadius: 60,
+    padding: 8,
+    borderColor: Colors.border,
+    borderWidth: 1,
+    backgroundColor: '#000000ff',
+  },
 });

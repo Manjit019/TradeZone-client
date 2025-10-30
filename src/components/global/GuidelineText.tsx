@@ -5,6 +5,7 @@ import CustomText from './CustomText';
 import { FONTS } from '../../constants/Fonts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { screenHeight } from '@utils/Scaling';
 
 interface GuidelineTextProps {
   text: any;
@@ -14,7 +15,7 @@ const GuidelineText: FC<GuidelineTextProps> = ({ text }) => {
   const { colors } = useTheme();
 
   return (
-    <View style={[styles.container, { backgroundColor: '#46391d' }]}>
+    <View style={[styles.container, { backgroundColor: '#413d12d4' }]}>
       <Icon
         name="information-circle"
         size={RFValue(16)}
@@ -53,7 +54,8 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 3,
+    elevation: 0,
+    marginTop : screenHeight * 0.28
   },
   textContainer: {
     width: '90%',

@@ -15,7 +15,7 @@ import CustomRadioInput from '@components/inputs/CustomRadioInput';
 
 interface InputStateProps {
   name : string;
-  date_of_birth : string;
+  date_of_birth : string; 
   gender : string;
 }
 
