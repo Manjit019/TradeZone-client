@@ -3,9 +3,9 @@ import React, { FC, useEffect, useState, useCallback } from 'react';
 import { useTheme } from '@react-navigation/native';
 import CustomText from '../global/CustomText';
 import { FONTS } from '../../constants/Fonts';
-import { formatPaisaWithCommas, getSignPaisa } from '../../utils/NumberUtils';
-import { useWS } from '../../utils/WSProvider';
 import { RFValue } from 'react-native-responsive-fontsize';
+import { useWS } from '@utils/WSProvide';
+import { formatPaisaWithCommas, getSignPaisa } from '@utils/NumberUtil';
 
 interface HoldingProps {
   data: Record<string, any>[];

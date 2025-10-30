@@ -9,20 +9,20 @@ import {
   ImageStyle,
 } from 'react-native';
 import { Colors } from '../../constants/Colors';
-import { useAppSelector } from '../../redux/reduxHook';
-import { selectUser } from '../../redux/reducers/userSlice';
 import CustomText from '../global/CustomText';
 import { FONTS } from '../../constants/Fonts';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import { navigate } from '../../utils/NavigationUtil';
+import { useAppSelector } from '@store/reduxHook';
+import { selectUser } from '@store/reducers/userSlice';
 
 interface UserAvatarProps {
   style?: ImageStyle;
 }
 
 const pic =
-  'https://deadline.com/wp-content/uploads/2024/01/Ne-Zha-2-billion_0ed5f3.jpeg';
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb5G6DnMqYtGKXRBe2JlnD9f1zwiMuAPemfg&s';
 
 const UserAvatar: React.FC<UserAvatarProps> = ({ style }) => {
   const user = useAppSelector(selectUser);
@@ -53,14 +53,14 @@ const UserAvatar: React.FC<UserAvatarProps> = ({ style }) => {
 
 const styles = StyleSheet.create({
   img: {
-    borderRadius: 20,
+    borderRadius: 40,
     justifyContent: 'center',
-    width: RFValue(28),
-    height: RFValue(28),
+    width: RFValue(35),
+    height: RFValue(35),
     alignItems: 'center',
     resizeMode: 'cover',
     marginLeft: 8,
-    backgroundColor: Colors.themeColor,
+    backgroundColor: Colors.light_text,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

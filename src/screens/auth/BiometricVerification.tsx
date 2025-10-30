@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@store/reduxHook';
 import { selectUser } from '@store/reducers/userSlice';
 import { useWS } from '@utils/WSProvide';
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView';
-import { resetAndNavigate } from '@utils/NavigationUtil';
+import { navigate, resetAndNavigate } from '@utils/NavigationUtil';
 import { loginWithBiometrics } from '@utils/BiometricUtil';
 import { VerifyPin } from '@store/actions/userAction';
 import CustomText from '@components/global/CustomText';
@@ -126,7 +126,7 @@ const BiometricVerification: FC<BiometricProps> = ({ onForgotPin }) => {
             loading={loading}
             otpValues={otpValues}
             error={otpError}
-            onForgotPin={()=>{}}
+            onForgotPin={onForgotPin}
         />
 
       </View>

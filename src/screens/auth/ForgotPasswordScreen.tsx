@@ -100,7 +100,7 @@ const ForgotPasswordScreen = ({ route }: any) => {
   return (
     <CustomSafeAreaView>
       <BackButton withBg />
-      <CustomText fontFamily={FONTS.Medium} variant="h3">
+      <CustomText fontFamily={FONTS.Medium} variant="h3" style={{marginVertical : 16}} >
         Forgot Password
       </CustomText>
 

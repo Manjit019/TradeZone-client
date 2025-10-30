@@ -3,14 +3,10 @@ import React, { FC, useEffect, useState } from 'react';
 import CustomText from '../global/CustomText';
 import { FONTS } from '../../constants/Fonts';
 import { useTheme } from '@react-navigation/native';
-import {
-  formatPaisaWithCommas,
-  getSignPaisa,
-  getSignText,
-} from '../../utils/NumberUtils';
 import MiniChart from './MiniChart';
-import { useWS } from '../../utils/WSProvider';
-import { navigate } from '../../utils/NavigationUtil';
+import { useWS } from '@utils/WSProvide';
+import { navigate } from '@utils/NavigationUtil';
+import { formatPaisaWithCommas, getSignPaisa, getSignText } from '@utils/NumberUtil';
 
 interface WatchListItemProps {
   item: Record<string, any>;
@@ -70,7 +66,7 @@ const MiniStockListItem: FC<WatchListItemProps> = ({ item }) => {
 
       <View style={{ alignItems: 'flex-end' }}>
         <CustomText variant="h8" fontFamily={FONTS.Medium}>
-          {formatPaisaWithCommas(item.currentPrice)}
+          ₹{formatPaisaWithCommas(item.currentPrice)}
         </CustomText>
 
         <CustomText

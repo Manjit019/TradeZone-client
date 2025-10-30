@@ -15,7 +15,7 @@ import { configureStore } from '@reduxjs/toolkit';
 const persistConfig = {
   key: 'root',
   storage: reduxStorage,
-  whitelist: ['user', 'theme'],
+  whitelist: ['user', 'theme','stock'],
   blacklist: [],
 };
 

@@ -1,7 +1,7 @@
 import { View, Text, Animated, Easing, StyleSheet, Image } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { RFValue } from 'react-native-responsive-fontsize';
-import Logo from '../../assets/images/logo.png';
+import Logo from '@assets/images/tradezone.jpg';
 import UserAvatar from './UserAvatar';
 
 const MainHeader = () => {
@@ -23,7 +23,7 @@ const MainHeader = () => {
       </View>
 
       <Animated.Image
-        source={require("../../assets/images/bull.png")}
+        source={require("@assets/images/bull.png")}
         style={[
           styles.middleImg,
           { transform: [{ translateY: fallAnim }] },
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   container: {
     alignItems: 'center',
-    paddingHorizontal: RFValue(16),
+    // paddingHorizontal: RFValue(2),
     flexDirection: 'row',
     justifyContent: 'space-between',
     position: 'relative',
@@ -55,10 +55,11 @@ const styles = StyleSheet.create({
     width: RFValue(40),
     height: RFValue(40),
     resizeMode: 'cover',
+    borderRadius: RFValue(50),
   },
   middleImg: {
-    width: RFValue(120),
-    height: RFValue(120),
+    width: RFValue(100),
+    height: RFValue(110),
     resizeMode: 'contain',
     position: 'absolute',
     top: -35,

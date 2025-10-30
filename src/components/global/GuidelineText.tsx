@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 2,
     elevation: 0,
-    marginTop : screenHeight * 0.28
+    marginTop : screenHeight * 0.25
   },
   textContainer: {
     width: '90%',

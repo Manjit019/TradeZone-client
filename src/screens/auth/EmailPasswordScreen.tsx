@@ -10,7 +10,6 @@ import { useAppDispatch } from '@store/reduxHook';
 import { validatePassword, validatePasswordEntry } from '@utils/ValidationUtil';
 import { LoginWithEmail } from '@store/actions/userAction';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { screenWidth } from '@utils/Scaling';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { FONTS } from '@constants/Fonts';
 import { globalStyles } from '@styles/globalStyle';
@@ -19,7 +18,7 @@ import { navigate } from '@utils/NavigationUtil';
 
 const EmailPasswordScreen = () => {
   const route = useRoute();
-  const { email } = route.params as any || 'hello@gmail.com';
+  const { email } = route.params as any ;
 
   const dispatch = useAppDispatch();
 

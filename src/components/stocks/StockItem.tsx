@@ -7,13 +7,13 @@ import {
   View,
 } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { useWS } from '../../utils/WSProvider';
 import React, { FC, useEffect, useState } from 'react';
 import { navigate } from '../../utils/NavigationUtil';
 import { Colors } from '../../constants/Colors';
 import CustomText from '../global/CustomText';
 import { FONTS } from '../../constants/Fonts';
-import { formatPaisaWithCommas, getSignText } from '../../utils/NumberUtils';
+import { useWS } from '@utils/WSProvide';
+import { formatPaisaWithCommas, getSignText } from '@utils/NumberUtil';
 
 type Stock = {
   __v: number;
@@ -80,22 +80,24 @@ const StockItem: FC<StockItemProps> = React.memo(({ item }) => {
       (priceChange / lastDayTradedPrice) * 100,
     ).toFixed(2);
 
-    const isProfit = priceChange > 0 ? Colors.profit : Colors.errorColor;
+    const isProfit = priceChange > 0 ? Colors.profit : Colors.loss;
     const isNeutral = priceChange === 0;
 
     return (
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={handlePress}
-        style={[styles.itemContainer, { borderColor: colors.border }]}
+        style={[styles.itemContainer, ]}
       >
-        <Image source={{ uri: iconUrl }} style={styles.img} />
+        <View style={styles.imgContainer}>
+          <Image source={{ uri: iconUrl }} style={styles.img} />
+        </View>
         <CustomText numberOfLines={1} variant="h8" fontFamily={FONTS.Medium}>
           {companyName}
         </CustomText>
         <View style={styles.priceContainer}>
           <CustomText numberOfLines={1} variant="h8" fontFamily={FONTS.Medium}>
-            {formatPaisaWithCommas(currentPrice)}
+            ₹{formatPaisaWithCommas(currentPrice)}
           </CustomText>
           <CustomText
             numberOfLines={1}
@@ -119,10 +121,11 @@ const styles = StyleSheet.create({
   itemContainer: {
     padding: 18,
     width: '48%',
-    height: RFValue(140),
-    borderWidth: Platform.OS === 'android' ? 1.5 : 1,
-    marginBottom: RFValue(20),
-    borderRadius: 12,
+    aspectRatio: 1,
+    // height: RFValue(140),
+    borderWidth: Platform.OS === 'android' ? 1.2 : 1,
+    marginBottom: RFValue(6),
+    borderRadius: 16,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -130,27 +133,27 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.1,
     shadowRadius: 2,
-    elevation: 3,
+    // elevation: 3,
+    backgroundColor: '#0d1f3a46',
+    borderColor : '#3f757e1e',
+  },
+  imgContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+    width: 40,
+    height: 40,
+    borderRadius: 10,
+    backgroundColor: '#44717756',
+    overflow : 'hidden'
   },
   img: {
-    width: 35,
-    resizeMode: 'cover',
-    height: 35,
-    backgroundColor: 'white',
+    resizeMode: 'contain',
     borderRadius: 8,
-    marginBottom: 8,
+    width: 35,
+    height: 35,
   },
   priceContainer: {
     marginTop: 22,
-  },
-  seeMoreContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  seeMoreIcon: {
-    opacity: 0.6,
-  },
-  seeMoreText: {
-    opacity: 0.6,
   },
 });

@@ -3,11 +3,12 @@ import { View, StyleSheet, Platform, TouchableOpacity } from 'react-native';
 import CustomText from '../global/CustomText';
 import { FONTS } from '../../constants/Fonts';
 import { useTheme } from '@react-navigation/native';
-import { formatPaisaWithCommas, getSignPaisa } from '../../utils/NumberUtils';
 
-import { useWS } from '../../utils/WSProvider';
+
 import MiniChart from '../stocks/MiniChart';
-import { navigate } from '../../utils/NavigationUtil';
+import { navigate } from '@utils/NavigationUtil';
+import { useWS } from '@utils/WSProvide';
+import { formatPaisaWithCommas, getSignPaisa } from '@utils/NumberUtil';
 
 interface HoldingListItemProps {
   item: Record<string, any>;

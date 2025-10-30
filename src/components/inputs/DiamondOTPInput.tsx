@@ -150,12 +150,13 @@ const styles = StyleSheet.create({
     width: '60%',
   },
   errorContainer: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     alignItems: 'center',
     marginVertical: 3,
     gap: 5,
     textAlign: 'center',
     alignSelf: 'center',
+    paddingInline : 10
   },
   errorText: {
     color: Colors.errorColor,
