@@ -6,9 +6,6 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/reduxHook';
-import { selectHoldings } from '../../redux/reducers/stockSlice';
-import { getAllHoldings } from '../../redux/actions/stockAction';
 import { Colors } from '../../constants/Colors';
 import CustomText from '../global/CustomText';
 import { FONTS } from '../../constants/Fonts';
@@ -16,6 +13,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { screenHeight } from '../../utils/Scaling';
 import HoldingCard from './HoldingCard';
 import HoldingList from './HoldingList';
+import { useAppDispatch, useAppSelector } from '@store/reduxHook';
+import { getAllHoldings } from '@store/actions/stockAction';
+import { selectHoldings } from '@store/reducers/stockSlice';
 
 const Holdings = () => {
   const dispatch = useAppDispatch();

@@ -1,12 +1,12 @@
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { FC } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useTheme } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import CustomText from '../global/CustomText';
-import { formatNumberWithCommas } from '../../utils/NumberUtils';
 import { FONTS } from '../../constants/Fonts';
-import { goBack } from '../../utils/NavigationUtil';
+import { goBack } from '@utils/NavigationUtil';
+import {formatPaisaWithCommas} from '@utils/NumberUtil'
 
 interface StockDetailProps {
   stock: Record<string, any>;
@@ -23,7 +23,7 @@ const TransactionHeader: FC<StockDetailProps> = ({ stock }) => {
     <View style={styles.container}>
       <View style={styles.flexRow}>
         <Icon
-          name="arrow-back"
+          name="chevron-back"
           onPress={() => goBack()}
           color={colors.text}
           size={RFValue(20)}
@@ -41,7 +41,7 @@ const TransactionHeader: FC<StockDetailProps> = ({ stock }) => {
               opacity: 0.6,
             }}
           >
-            {formatNumberWithCommas(stock?.currentPrice)}
+            {formatPaisaWithCommas(parseInt(stock?.currentPrice))}
             {'  '}
             <CustomText fontFamily={FONTS.Regular} variant="h9" style={{}}>
               ({percentageChange}) Depth

@@ -54,12 +54,12 @@ const TradingView = () => {
           backgroundColor: Colors.background,
           right: -1,
         }}
-        allowsLinkPreview
         onHttpError={err => {
           if (err.nativeEvent.description.includes('net')) {
             setNetworkError(true);
           }
         }}
+        
       />
 
       <View style={[styles.btnContainer]}>

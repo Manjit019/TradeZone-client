@@ -1,4 +1,5 @@
 import {
+  RefreshControl,
   ScrollView,
   StyleSheet,
   Text,
@@ -18,6 +19,7 @@ import CustomText from '@components/global/CustomText';
 import { FONTS } from '@constants/Fonts';
 import MiniStockList from '@components/stocks/MiniStockList';
 import HoldingList from '@components/stockholdings/HoldingList';
+import Holdings from '@components/stockholdings/Holdings';
 
 const Stock = () => {
   const dispatch = useAppDispatch();
@@ -28,6 +30,12 @@ const Stock = () => {
 
   const fetchStocks = async () => {
     await dispatch(GetAllStocks());
+  };
+
+  const refreshHandler = async () => {
+    setRefreshing(true);
+    await fetchStocks();
+    setRefreshing(false);
   };
 
   useEffect(() => {
@@ -41,6 +49,9 @@ const Stock = () => {
         style={styles.container}
         contentContainerStyle={{ paddingBottom: 100 }}
         nestedScrollEnabled
+        refreshControl={
+          <RefreshControl onRefresh={refreshHandler} refreshing={refreshing}/>
+        }
       >
         <Seperator label="Popular Stocks" seeMore />
         <StockCard data={stockData} />
@@ -83,7 +94,7 @@ const Stock = () => {
           activeTab === 'stocks' ? (
             <MiniStockList data={stockData.slice(4)} /> 
           ) : (
-            <HoldingList data={[]} />
+            <Holdings />
           )
         }
 

@@ -11,12 +11,12 @@ import Toast from 'react-native-toast-message';
 export const CheckProfile = async (dispatch: any) => {
   try {
     const res = await appAxios.get('/auth/profile');
-    
-    console.log('Check profile res : ',res);
+
+    console.log('Check profile res : ', res);
 
     await dispatch(setUser(res.data));
 
-    const {login_pin_exists, phone_exist, name } = res.data;
+    const { login_pin_exists, phone_exist, name } = res.data;
 
     if (!phone_exist) {
       resetAndNavigate('PhoneScreen');
@@ -267,3 +267,12 @@ function updateHook(dispatch: any, data: any) {
     dispatch(setUser(data.user));
   }
 }
+
+export const refetchUser = () => async (dispatch: any) => {
+  try {
+    const res = await appAxios.get('/auth/profile');
+    await dispatch(setUser(res.data));
+  } catch (error) {
+    console.log('Refetch user err : ', error);
+  }
+};

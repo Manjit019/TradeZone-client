@@ -1,6 +1,6 @@
 import { View, StyleSheet } from "react-native";
 import React, { FC } from "react";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from "react-native-vector-icons/Ionicons";
 import Icon2 from "react-native-vector-icons/MaterialCommunityIcons";
 import { goBack } from "../../utils/NavigationUtil";
 import { useTheme } from "@react-navigation/native";
@@ -12,7 +12,7 @@ const ProfileHeader: FC = () => {
   return (
     <View style={styles.flexRowBetween}>
       <Icon
-        name="arrow-back"
+        name="chevron-back"
         onPress={() => {
           goBack();
         }}
@@ -22,13 +22,13 @@ const ProfileHeader: FC = () => {
 
       <View style={styles.flexRow}>
         <Icon
-          name="settings"
+          name="settings-outline"
           onPress={() => {}}
           color={colors.text}
           size={RFValue(20)}
         />
         <Icon2
-          name="bell"
+          name="bell-outline"
           onPress={() => {}}
           color={colors.text}
           size={RFValue(20)}

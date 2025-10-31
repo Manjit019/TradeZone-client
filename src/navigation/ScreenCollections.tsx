@@ -10,8 +10,11 @@ import PhoneScreen from '@screens/auth/PhoneScreen';
 import PinScreen from '@screens/auth/PinScreen';
 import RegisterScreen from '@screens/auth/RegisterScreen';
 import SplashScreen from '@screens/onboarding/SplashScreen';
+import ProfileScreen from '@screens/profile/ProfileScreen';
 import Stock from '@screens/stock/Stock';
 import TradingView from '@screens/stock/TradingView';
+import Transaction from '@screens/stock/Transaction';
+import TransactionSuccess from '@screens/stock/TransactionSuccess';
 
 export const authStacks = [
   {
@@ -71,7 +74,22 @@ export const dashboardStacks = [
   },{
     name : 'TradingView',
     component : TradingView
+  },{
+    name : 'Transaction',
+    component : Transaction
+  },
+  {
+    name : 'TransactionSuccess',
+    component : TransactionSuccess
   }
 ];
 
-export const mergedStacks = [...authStacks, ...dashboardStacks];
+
+export const profileStacks = [
+  {
+    name : 'ProfileScreen',
+    component : ProfileScreen
+  }
+]
+
+export const mergedStacks = [...authStacks, ...dashboardStacks,...profileStacks];
